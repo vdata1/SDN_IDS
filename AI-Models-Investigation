@@ -1,0 +1,35 @@
+Investigating ML/AI Models
+
+This document provides a comprehensive comparative analysis of Machine Learning, Deep Learning, and Reinforcement Learning models investigated for Low-Rate Distributed Denial of Service (LDDoS) detection and mitigation.
+
+---
+
+## 1. supervised Models
+
+| Model | Concept | Pros | Cons | How It Helps the Detection Idea |
+| :--- | :--- | :--- | :--- | :--- |
+| **MLP** | Fully connected dense layers; every node connects to every node in the next layer. | Simple, pre-engineered static feature classification (Baseline). | Completely blind to both spatial structure and temporal sequences. | **Baseline Comparison:** Used only as a basic reference point to prove how much better our hybrid model performs. |
+| **CNN (Convolutional)** | Uses local filters (kernels) to extract spatial feature maps. | Capturing local byte layouts and signature payloads within single packets. | Blind to long-term sequential dependencies across time. | **Spatial Extraction:** Extracts spatial features and packet layouts from the flow. |
+| **RNN / LSTM** | Passes memory step-by-step to understand the sequence of events. | Tracking multi-stage attacks and slow scanning behaviors over time. | Slow training on GPUs (due to sequential nature); vanilla RNN suffers from vanishing gradients. | **Temporal Analysis:** Analyzes the temporal behavior of flows over time and detects complex attacks. |
+| **Transformers** | Uses Self-Attention to map relationships between all input tokens simultaneously. | Deeply analyzing complex global relationships across massive network flows. | Heavy memory bottleneck and extreme GPU resource demands. | **Global Context:** Connects the dots between separate, long-range network events that happen far apart in time. |
+| **Mamba (SSM)** | Uses Selective State Space Models (SSM) to compress context into a smart, fixed-size state. | High-speed, real-time enterprise traffic monitoring and long-duration log analysis. | Relatively new paradigm; fewer pre-trained models and community implementations compared to Transformers. | **Ultra-Fast Scanning:** Runs linear-time scanning over massive streams of enterprise traffic data without delay. |
+| **LNNs (Liquid Networks)** | Uses continuous-time differential equations that adapt weight parameters dynamically at runtime. | Resource-constrained IoT/Embedded security where network conditions change unpredictably. | Highly complex and mathematically difficult to train initially on standard deep learning frameworks. | **Concept Drift Adaptation:** Adjusts parameters at runtime to capture unpredictable, evolving mutation attacks. |
+
+---
+
+## 2. Unsupervised Models
+
+| Model | Concept | Pros | Cons | How It Helps the Detection Idea |
+| :--- | :--- | :--- | :--- | :--- |
+| **Autoencoder (AE/VAE)** | Compresses input data into a lower-dimensional bottleneck and reconstructs it back. | Excellent for Zero-day attack detection; trains only on normal traffic without needing any labels. | High sensitivity in calibrating the reconstruction-error threshold, risking high false alarms. | **Zero-Day Detection:** Catches completely unknown, zero-day attacks by flagging high reconstruction errors. |
+| **GAN (Generative Adversarial Network)** | Two neural networks (Generator & Discriminator) compete against each other to create realistic data. | Generates highly realistic synthetic traffic to fix data imbalance and tests the system's defensive limits. | Highly unstable training (Mode Collapse); risk of being exploited by attackers to bypass security. | **Dataset Balancing:** Generates realistic synthetic attack traffic to ensure the IDS trains well on rare threats. |
+| **GNN (Graph Neural Network)** | Represents network traffic as a graph structured of connected devices (nodes) and flows (edges). | Successfully captures topological attacks, Botnet fan-out, and lateral movements across the network. | Heavy computation and memory overhead on the SDN Controller due to real-time graph updating. | **Relational Anomalies:** Spots infected devices spreading malware or communicating inside a Botnet. |
+| **Diffusion Model** | Generates data by systematically adding noise to data and learning to reverse the process to remove it. | Generates extremely high-fidelity and diverse synthetic attack data with more stable training than GANs. | Iterative sampling process is very slow, making it impossible to use for real-time traffic detection. | **Offline Data Augmentation:** Provides varied training data offline, preparing the detector for complex mutations. |
+
+---
+
+## 3. Reinforcement Learning (Mitigation & Control)
+
+| Model | Concept | Pros | Cons | How It Helps the Detection Idea |
+| :--- | :--- | :--- | :--- | :--- |
+| **DQL / DQN (Deep Q-Learning)** | Combines Reinforcement Learning with Deep Neural Networks to learn optimal control actions through rewards and penalties. | Enables truly autonomous, zero-human dynamic mitigation and learns complex defense strategies directly from environment feedback. | Highly unstable training phase; requires long exploration time and faces delayed reward challenges. | **Autonomous Mitigation:** Acts as the AI Agent's decision-making brain to learn the best dynamic response based on real-time feedback. |
