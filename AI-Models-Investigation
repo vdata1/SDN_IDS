@@ -1,10 +1,10 @@
-Investigating ML/AI Models
+# Investigating ML/AI Models
 
 This document provides a comprehensive comparative analysis of Machine Learning, Deep Learning, and Reinforcement Learning models investigated for Low-Rate Distributed Denial of Service (LDDoS) detection and mitigation.
 
 ---
 
-## 1. supervised Models
+## 1. Supervised Models
 
 | Model | Concept | Pros | Cons | How It Helps the Detection Idea |
 | :--- | :--- | :--- | :--- | :--- |
@@ -32,4 +32,4 @@ This document provides a comprehensive comparative analysis of Machine Learning,
 
 | Model | Concept | Pros | Cons | How It Helps the Detection Idea |
 | :--- | :--- | :--- | :--- | :--- |
-| **DQL / DQN (Deep Q-Learning)** | Combines Reinforcement Learning with Deep Neural Networks to learn optimal control actions through rewards and penalties. | Enables truly autonomous, zero-human dynamic mitigation and learns complex defense strategies directly from environment feedback. | Highly unstable training phase; requires long exploration time and faces delayed reward challenges. | **Autonomous Mitigation:** Acts as the AI Agent's decision-making brain to learn the best dynamic response based on real-time feedback. |
+| **DQL / DQN** | Combines Reinforcement Learning with Deep Neural Networks to learn optimal control actions through rewards and penalties. | Enables truly autonomous, zero-human dynamic mitigation and learns complex defense strategies directly from environment feedback. | Highly unstable training phase; requires long exploration time and faces delayed reward challenges. | **Autonomous Mitigation:** Acts as the AI Agent's decision-making brain to learn the best dynamic response based on real-time feedback. |
