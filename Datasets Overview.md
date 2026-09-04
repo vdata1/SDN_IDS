@@ -19,3 +19,4 @@
 | **DoS attacks-Slowloris** | CSE-CIC-IDS2018 - DoS1 Thursday | 9,908 |
 | **DoS attacks-SlowHTTPTest** | CSE-CIC-IDS2018 - DoS2 Friday | 55 |
 | **Total Tracked Low-Rate Instances** | *Combined Datasets* | **149,975** |
+| **BENIGN** | Combined Datasets | **2,000,771** |
